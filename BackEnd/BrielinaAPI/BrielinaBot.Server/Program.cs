@@ -2,6 +2,7 @@ using InjecaoDependecia;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
+var configuration = builder.Configuration;
 
 // Add services to the container.
 
@@ -11,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Dependency Injection
-_ = new Bootstrapper(services);
+_ = new Bootstrapper(services, configuration);
 
 var app = builder.Build();
 
