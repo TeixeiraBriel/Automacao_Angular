@@ -1,13 +1,17 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Dominio.Configuration;
+using InjecaoDependecia.Extensions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace InjecaoDependecia
 {
     public class Bootstrapper
     {
-        IServiceCollection _services;
-        public Bootstrapper(IServiceCollection services)
+        public Bootstrapper(IServiceCollection services, IConfiguration configuration)
         {
-            _services = services;
+            services.AddConfiguration<AppSettings>(configuration);
+
+            //services.AddScoped<Iteste, Teste>();
         }
     }
 }
