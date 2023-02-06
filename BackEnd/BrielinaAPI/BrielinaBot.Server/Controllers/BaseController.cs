@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Host.Controllers
 {
-    public class HomeController : Controller
+    public class BaseController : Controller
     {
         #region Variaveis
 
@@ -12,7 +12,7 @@ namespace Host.Controllers
         #endregion
 
         #region Construtor
-        public HomeController(AppSettings appSettings)
+        public BaseController(AppSettings appSettings)
         {
             _appSettings = appSettings;
         }
