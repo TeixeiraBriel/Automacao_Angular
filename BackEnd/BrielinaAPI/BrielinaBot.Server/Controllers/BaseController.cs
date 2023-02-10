@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Host.Controllers
 {
-    public class BaseController : Controller
+    public class BaseController : MainController
     {
         #region Variaveis
 
