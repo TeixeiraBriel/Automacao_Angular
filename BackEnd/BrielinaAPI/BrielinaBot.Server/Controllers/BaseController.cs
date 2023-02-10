@@ -28,6 +28,15 @@ namespace Host.Controllers
             return StatusCode(200, _appSettings.Version);
         }
 
+        //[JwtAuthorize]
+        [HttpGet, Route("Animais")]
+        public IActionResult Animais()
+        {
+            string json = "[{ \"Nome\": \"Vaca\", \"Idade\": \"15\", \"Cor\": \"Azul\", \"Sexo\": \"Femea\", \"Peso\": \"80kg\" },{ \"Nome\": \"Urso\", \"Idade\": \"5\", \"Cor\": \"Vermelho\", \"Sexo\": \"Macho\", \"Peso\": \"10kg\" },{ \"Nome\": \"Pato\", \"Idade\": \"1\", \"Cor\": \"Rosa\", \"Sexo\": \"Macho\", \"Peso\": \"20kg\" }]";
+
+            return StatusCode(200, json);
+        }
+
         #endregion
     }
 }

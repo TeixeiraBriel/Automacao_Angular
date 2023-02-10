@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import  {Animal} from '../Animal';
+import  {ListService} from 'src/app/list-service.service';
+
 
 @Component({
   selector: 'app-main',
@@ -6,9 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
-  animals = [
-    {Nome:"Vaca", Idade:"15", Cor:"Azul", Sexo:"Femea", Peso:"80kg"},
-    {Nome:"Urso", Idade:"5",Cor:"Vermelho",Sexo:"Macho",Peso:"10kg"},
-    {Nome:"Pato", Idade:"1",Cor:"Rosa",Sexo:"Macho",Peso:"20kg"}
-  ]
+  animais: Animal[] = [];
+
+  constructor(private listService : ListService) {
+    this.getAnimals();
+  }
+
+  getAnimals():void{
+    this.listService.getAll().subscribe((animais) => (this.animais = animais));
+  }
 }

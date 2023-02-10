@@ -24,7 +24,7 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 //Dependency Injection
 _ = new Bootstrapper(services, configuration);
 
-hosting.ConfigureLogging( logging =>
+hosting.ConfigureLogging(logging =>
 {
     logging.ClearProviders();
     logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Information);
@@ -52,6 +52,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
