@@ -1,7 +1,7 @@
 export interface Animal {
-    Nome: String,
-    Idade: String,
-    Cor: String,
-    Sexo: String,
-    Peso: String
+    nome: String,
+    idade: String,
+    cor: String,
+    sexo: String,
+    peso: String
 }

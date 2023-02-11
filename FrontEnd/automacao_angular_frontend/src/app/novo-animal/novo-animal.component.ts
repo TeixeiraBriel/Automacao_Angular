@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import  {ListService} from 'src/app/list-service.service';
-import  {Animal} from '../Animal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-novo-animal',
@@ -10,7 +10,7 @@ import  {Animal} from '../Animal';
 export class NovoAnimalComponent {
   retorno: String = "";
 
-  constructor(private listService : ListService) {
+  constructor(private listService : ListService, private router: Router) {
   }
 
   chamarNome(){
@@ -19,9 +19,9 @@ export class NovoAnimalComponent {
     console.log(this.retorno);
   }
 
-  postar(dados: Animal) {
+  postar(dados: any) {
     this.listService.createUnique(dados).subscribe((retorno) => (this.retorno = retorno));
-    console.log(dados);
+    this.router.navigate(['Main']);
   }
   
 }

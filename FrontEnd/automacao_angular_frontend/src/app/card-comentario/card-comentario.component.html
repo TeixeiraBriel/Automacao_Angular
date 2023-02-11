@@ -1,8 +1,9 @@
 
 <div style="margin: 10; background-color: aquamarine; width: 100px;">
-    <h1>{{animal.Nome}}</h1>
-    <p>Idade: {{animal.Idade}}</p>
-    <p>Cor: {{animal.Cor}}</p>
-    <p>Sexo: {{animal.Sexo}}</p>
-    <p>Peso: {{animal.Peso}}</p>
+    <h1>{{animal.nome}}</h1>
+    <p>Idade: {{animal.idade}}</p>
+    <p>Cor: {{animal.cor}}</p>
+    <p>Sexo: {{animal.sexo}}</p>
+    <p>Peso: {{animal.peso}}</p>
+    <button (click)="excluirAnimal(animal.nome)">Excluir</button>
 </div>
