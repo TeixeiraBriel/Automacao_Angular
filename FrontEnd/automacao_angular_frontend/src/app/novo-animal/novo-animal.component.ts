@@ -32,15 +32,15 @@ export class NovoAnimalComponent {
     });
   }
 
-  postar(dados: any) {
+  async postar(dados: any) {
     if (this.Editar) {
       dados.Nome = this.AnimalEditar.nome;
-      this.listService.editUnique(dados).subscribe((retorno) => (this.Retorno = retorno));
+      await this.listService.editUnique(dados).subscribe((retorno) => (this.Retorno = retorno));
     }
     else {
-      this.listService.createUnique(dados).subscribe((retorno) => (this.Retorno = retorno));
+      await this.listService.createUnique(dados).subscribe((retorno) => (this.Retorno = retorno));
     }
 
-    this.router.navigate(['Main']);
+     this.router.navigate(['Main']);
   }
 }

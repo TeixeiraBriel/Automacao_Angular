@@ -74,7 +74,7 @@ namespace Host.Controllers
             {
                 retorno = _executorAnimais.ExecutaComRetorno("CriaNovoAnimal", new { novoAnimal = novoAnimal }.ToExpando());
 
-                return StatusCode(200, "Sucesso!");
+                return StatusCode(200, novoAnimal);
             }
             catch (Exception ex)
             {

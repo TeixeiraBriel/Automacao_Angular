@@ -21,6 +21,7 @@ export class CardComentarioComponent {
     this.listService.deleteUnique(nome).subscribe((retorno) => (this.Retorno = retorno));
     window.location.reload();
   }
+  
   navegaEditarAnimal(animal:Animal):void{
     this.router.navigate(['/novoAnimal', animal]);
   }
