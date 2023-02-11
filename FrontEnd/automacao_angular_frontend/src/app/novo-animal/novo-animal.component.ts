@@ -25,7 +25,6 @@ export class NovoAnimalComponent {
 
       if (route.snapshot.paramMap.has('nome')) {
         this.Editar = true;
-        this.preencherCampos();
       }
       else {
         this.Editar = false;
@@ -33,12 +32,9 @@ export class NovoAnimalComponent {
     });
   }
 
-  preencherCampos(){
-    
-  }
-
   postar(dados: any) {
     if (this.Editar) {
+      dados.Nome = this.AnimalEditar.nome;
       this.listService.editUnique(dados).subscribe((retorno) => (this.Retorno = retorno));
     }
     else {
