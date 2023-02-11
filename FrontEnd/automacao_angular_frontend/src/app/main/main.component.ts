@@ -10,12 +10,6 @@ import  {ListService} from 'src/app/list-service.service';
 })
 export class MainComponent {
   animais: Animal[] = [];
-  retorno: String = "";
-
-  chamarNome(){
-    var texto = ((document.getElementById("inputLero") as HTMLInputElement).value);
-    this.listService.getUnique(texto).subscribe((retorno) => (this.retorno = retorno));
-  }
 
   constructor(private listService : ListService) {
     this.getAnimals();

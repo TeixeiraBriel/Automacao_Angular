@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { CardComentarioComponent } from './card-comentario/card-comentario.component';
+import { NovoAnimalComponent } from './novo-animal/novo-animal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { CardComentarioComponent } from './card-comentario/card-comentario.compo
     LoginComponent,
     HeaderComponent,
     MainComponent,
-    CardComentarioComponent
+    CardComentarioComponent,
+    NovoAnimalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

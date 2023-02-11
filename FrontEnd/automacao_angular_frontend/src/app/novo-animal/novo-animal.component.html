@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div style="margin-top: 75px;">
+    <button style="Margin:10px"><a routerLink="/Main" routerLinkActive="active"
+            ariaCurrentWhenActive="page">Voltar</a></button>
+
+    <form #meuForm="ngForm" (ngSubmit)="postar(meuForm.value)">
+        <div>
+            <input ngModel #formNome="ngModel" required name="nome" placeholder="Nome..." type="text" />
+        </div>
+        <div>
+            <input ngModel #formIdade="ngModel" required name="Idade" placeholder="Idade..." type="text" />
+        </div>
+        <div>
+            <input ngModel #formCor="ngModel" required name="Cor" placeholder="Cor..." type="text" />
+        </div>
+        <div>
+            <input ngModel #formISexo="ngModel" required name="Sexo" placeholder="Sexo..." type="text" />
+        </div>
+        <div>
+            <input ngModel #formPeso="ngModel" required name="Peso" placeholder="Peso..." type="text" />
+        </div>
+
+        <div>
+            <button [disabled]="formNome.invalid || formIdade.invalid || formCor.invalid || formISexo.invalid || formPeso.invalid" type="submit" routerLink="/Main">
+                Enviar
+            </button>
+        </div>
+    </form>
+</div>

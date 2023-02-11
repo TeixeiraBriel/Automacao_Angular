@@ -13,10 +13,10 @@ export class ListService {
   constructor(private http:HttpClient) { }
 
   getAll():Observable<Animal[]>{
-    return this.http.get<Animal[]>(this.apiUrl+"/Base/Animais");
+    return this.http.get<Animal[]>(this.apiUrl+"/Animal/Todos");
   }
 
   getUnique(Nome: string):Observable<string>{
-    return this.http.get<string>("https://localhost:7002/api/Base/Animais/"+Nome);
+    return this.http.get<string>(this.apiUrl+"/Animal/"+Nome);
   }
 }
