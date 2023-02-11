@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import  {Animal} from '../Animal';
 import  {ListService} from 'src/app/list-service.service';
 
-
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',

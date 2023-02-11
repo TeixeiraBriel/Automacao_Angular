@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div style="margin-top: 75px;">
+<!-- <div style="margin-top: 75px;">
     <button style="Margin:10px"><a routerLink="/Main" routerLinkActive="active"
             ariaCurrentWhenActive="page">Voltar</a></button>
 
@@ -25,5 +25,65 @@
                 Enviar
             </button>
         </div>
-    </form>
+</div> -->
+<div class="main-container">
+    <div>
+        <h2 style="margin: 5px;">Novo Animal</h2>
+        <form #meuForm="ngForm" (ngSubmit)="postar(meuForm.value)">
+            <div style="display: flex;">
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nome</mat-label>
+                        <input matInput placeholder="..." ngModel #formNome="ngModel" required name="nome"
+                            placeholder="..." type="text" [(ngModel)]="AnimalEditar.nome" [disabled]="Editar">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Idade</mat-label>
+                        <input matInput placeholder="..." ngModel #formIdade="ngModel" required name="Idade"
+                            placeholder="..." type="text" [(ngModel)]="AnimalEditar.idade" type="number">
+                    </mat-form-field>
+                </p>
+            </div>
+            <div style="display: flex;">
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Cor</mat-label>
+                        <input matInput placeholder="..." ngModel #formCor="ngModel" required name="Cor"
+                            placeholder="..." type="text" [(ngModel)]="AnimalEditar.cor">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sexo</mat-label>
+                        <mat-select ngModel #formISexo="ngModel" required name="Sexo"
+                        placeholder="..." type="text" [(ngModel)]="AnimalEditar.sexo">
+                          <mat-option value="Macho">Macho</mat-option>
+                          <mat-option value="Femea">Femea</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Peso</mat-label>
+                        <input matInput placeholder="..." ngModel #formPeso="ngModel" required name="Peso"
+                            placeholder="..." type="text" [(ngModel)]="AnimalEditar.peso" type="number">
+                    </mat-form-field>
+                </p>
+            </div>
+            <div style="display: flex;">
+                <button mat-raised-button color="primary"
+                    [disabled]="formNome.invalid || formIdade.invalid || formCor.invalid || formISexo.invalid || formPeso.invalid"
+                    type="submit">
+                    Enviar
+                </button>
+
+                <button mat-raised-button color="basic" routerLink="/Main" routerLinkActive="active"
+                    ariaCurrentWhenActive="page">
+                    Voltar
+                </button>
+            </div>
+        </form>
+    </div>
 </div>

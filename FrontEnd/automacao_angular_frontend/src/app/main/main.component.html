@@ -1,7 +1,10 @@
 <app-header></app-header>
-<div style="margin-top: 75px;">
-    <div>
-        <button style="Margin:10px"><a routerLink="/novoAnimal" routerLinkActive="active" ariaCurrentWhenActive="page">Novo Animal</a></button>
-    </div>
-    <app-card-comentario *ngFor="let animal of animais" [animal]="animal"></app-card-comentario>
+
+<div class="card-container">
+    <app-card-comentario class="card" *ngFor="let animal of animais" [animal]="animal"></app-card-comentario>
 </div>
+
+<button class="btn_novo" mat-fab color="primary" routerLink="/novoAnimal" routerLinkActive="active"
+    ariaCurrentWhenActive="page">
+    <mat-icon>control_point</mat-icon>
+</button>
