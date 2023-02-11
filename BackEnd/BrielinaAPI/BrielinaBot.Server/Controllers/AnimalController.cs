@@ -1,6 +1,9 @@
 ﻿using Dominio.Configuration;
 using Dominio.Entidades;
+using Dominio.Interfaces.Executor;
+using Dominio.ObjetoValor.Pipelines;
 using Microsoft.AspNetCore.Mvc;
+using XpandoLibrary;
 
 namespace Host.Controllers
 {
@@ -10,12 +13,15 @@ namespace Host.Controllers
 
         public AppSettings _appSettings { get; set; }
 
+        private IExecutor _executorAnimais;
+
         #endregion
 
         #region Construtor
-        public AnimalController(AppSettings appSettings)
+        public AnimalController(AppSettings appSettings, IExecutor executorAnimais)
         {
             _appSettings = appSettings;
+            _executorAnimais = executorAnimais;
         }
 
         #endregion
@@ -26,11 +32,12 @@ namespace Host.Controllers
         [HttpGet, Route("Todos")]
         public IActionResult Animais()
         {
+            ResultadoExecucao retorno = null;
             try
             {
-                string json = "[{ \"Nome\": \"Vaca\", \"Idade\": \"15\", \"Cor\": \"Azul\", \"Sexo\": \"Femea\", \"Peso\": \"80kg\" },{ \"Nome\": \"Urso\", \"Idade\": \"5\", \"Cor\": \"Vermelho\", \"Sexo\": \"Macho\", \"Peso\": \"10kg\" },{ \"Nome\": \"Pato\", \"Idade\": \"1\", \"Cor\": \"Rosa\", \"Sexo\": \"Macho\", \"Peso\": \"20kg\" }]";
+                retorno = _executorAnimais.ExecutaComRetorno("BuscaTodosAnimais", new { }.ToExpando());
 
-                return StatusCode(200, json);
+                return StatusCode(200, retorno.Output.Animais);
             }
             catch (Exception ex)
             {
@@ -42,9 +49,15 @@ namespace Host.Controllers
         [HttpGet, Route("{NomeAnimal}")]
         public IActionResult Animais([FromRoute] string NomeAnimal)
         {
+            ResultadoExecucao retorno = null;
             try
             {
-                return StatusCode(200, $"Você chamou {NomeAnimal}");
+                retorno = _executorAnimais.ExecutaComRetorno("BuscaAnimalEspecifico", new { nomeAnimal = NomeAnimal, message = "Sucesso" }.ToExpando());
+
+                if (retorno.Output.message == "Sucesso")
+                    return StatusCode(200, retorno.Output.Animal);
+                else
+                    return StatusCode(200, retorno.Output.message);
             }
             catch (Exception ex)
             {
@@ -54,11 +67,34 @@ namespace Host.Controllers
 
         //[JwtAuthorize]
         [HttpPost, Route("novo")]
-        public IActionResult novoAnimal([FromBody] Animal NomeAnimal)
+        public IActionResult novoAnimal([FromBody] Animal novoAnimal)
         {
+            ResultadoExecucao retorno = null;
             try
             {
-                return StatusCode(200, NomeAnimal);
+                retorno = _executorAnimais.ExecutaComRetorno("CriaNovoAnimal", new { Animal = novoAnimal }.ToExpando());
+
+                return StatusCode(200, "Sucesso!");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        //[JwtAuthorize]
+        [HttpPost, Route("remover/{NomeAnimal}")]
+        public IActionResult RemoverAnimal([FromRoute] string NomeAnimal)
+        {
+            ResultadoExecucao retorno = null;
+            try
+            {
+                retorno = _executorAnimais.ExecutaComRetorno("RemoverAnimal", new { nomeAnimal = NomeAnimal, message = "Sucesso" }.ToExpando());
+
+                if (retorno.Output.message == "Sucesso")
+                    return StatusCode(200, $"Você Excluiu {NomeAnimal}");
+                else
+                    return StatusCode(200, retorno.Output.message);
             }
             catch (Exception ex)
             {

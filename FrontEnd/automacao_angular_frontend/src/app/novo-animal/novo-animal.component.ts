@@ -15,12 +15,13 @@ export class NovoAnimalComponent {
 
   chamarNome(){
     var texto = ((document.getElementById("inputLero") as HTMLInputElement).value);
-    this.listService.getUnique(texto).subscribe((retorno) => (this.retorno = retorno));
+    this.listService.getUnique(texto).subscribe();
     console.log(this.retorno);
   }
 
   postar(dados: Animal) {
-    console.log('Valor formulário', dados);
+    this.listService.createUnique(dados).subscribe((retorno) => (this.retorno = retorno));
+    console.log(dados);
   }
   
 }

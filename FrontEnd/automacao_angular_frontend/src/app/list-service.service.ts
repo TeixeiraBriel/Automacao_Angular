@@ -16,7 +16,11 @@ export class ListService {
     return this.http.get<Animal[]>(this.apiUrl+"/Animal/Todos");
   }
 
-  getUnique(Nome: string):Observable<string>{
-    return this.http.get<string>(this.apiUrl+"/Animal/"+Nome);
+  getUnique(Nome: string):Observable<Animal>{
+    return this.http.get<Animal>(this.apiUrl+"/Animal/"+Nome);
+  }  
+  
+  createUnique(Animal: Animal):Observable<string>{
+    return this.http.post<string>(this.apiUrl+"/Animal/novo", Animal);
   }
 }
