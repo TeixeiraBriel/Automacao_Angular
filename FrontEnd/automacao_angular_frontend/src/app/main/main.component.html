@@ -1,4 +1,12 @@
 <app-header></app-header>
 <div style="margin-top: 75px;">
+    <div>
+        <form>
+            <label>requisição:</label>
+            <input type="text" id="inputLero"/>
+            <button (click)="chamarNome()">Confirmar</button>
+        </form>
+    </div>
     <app-card-comentario *ngFor="let animal of animais" [animal]="animal"></app-card-comentario>
+    <h3>{{retorno}}</h3>
 </div>

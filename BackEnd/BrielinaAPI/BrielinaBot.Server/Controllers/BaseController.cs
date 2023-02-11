@@ -37,6 +37,13 @@ namespace Host.Controllers
             return StatusCode(200, json);
         }
 
+        //[JwtAuthorize]
+        [HttpGet, Route("Animais/{NomeAnimal}")]
+        public IActionResult Animais([FromRoute] string NomeAnimal)
+        {
+            return StatusCode(200, $"Você chamou {NomeAnimal}");
+        }
+
         #endregion
     }
 }

@@ -8,11 +8,15 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ListService {
-  private apiUrl = "https://localhost:7002/api/Base/Animais";
+  private apiUrl = "https://localhost:7002/api";
 
   constructor(private http:HttpClient) { }
 
   getAll():Observable<Animal[]>{
-    return this.http.get<Animal[]>(this.apiUrl);
+    return this.http.get<Animal[]>(this.apiUrl+"/Base/Animais");
+  }
+
+  getUnique(Nome: string):Observable<string>{
+    return this.http.get<string>("https://localhost:7002/api/Base/Animais/"+Nome);
   }
 }
