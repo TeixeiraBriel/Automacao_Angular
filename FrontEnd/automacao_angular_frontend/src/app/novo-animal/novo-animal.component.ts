@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import  {ListService} from 'src/app/list-service.service';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { ListService } from 'src/app/list-service.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Animal } from '../Animal';
 
 @Component({
   selector: 'app-novo-animal',
@@ -8,20 +9,42 @@ import { Router } from '@angular/router';
   styleUrls: ['./novo-animal.component.css']
 })
 export class NovoAnimalComponent {
-  retorno: String = "";
+  @Input() animal: { nome: String, idade: String, cor: String, sexo: String, peso: String } = { nome: "", idade: "", cor: "", sexo: "", peso: "" };
+  AnimalEditar: Animal = { nome: "", idade: "", cor: "", sexo: "", peso: "" };
+  Editar: boolean = false;
+  Retorno: String = "";
 
-  constructor(private listService : ListService, private router: Router) {
+  constructor(private listService: ListService, private router: Router, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.AnimalEditar.nome = params['nome'];
+      this.AnimalEditar.idade = params['idade'];
+      this.AnimalEditar.cor = params['cor'];
+      this.AnimalEditar.sexo = params['sexo'];
+      this.AnimalEditar.peso = params['peso'];
+
+
+      if (route.snapshot.paramMap.has('nome')) {
+        this.Editar = true;
+        this.preencherCampos();
+      }
+      else {
+        this.Editar = false;
+      }
+    });
   }
 
-  chamarNome(){
-    var texto = ((document.getElementById("inputLero") as HTMLInputElement).value);
-    this.listService.getUnique(texto).subscribe();
-    console.log(this.retorno);
+  preencherCampos(){
+    
   }
 
   postar(dados: any) {
-    this.listService.createUnique(dados).subscribe((retorno) => (this.retorno = retorno));
+    if (this.Editar) {
+      this.listService.editUnique(dados).subscribe((retorno) => (this.Retorno = retorno));
+    }
+    else {
+      this.listService.createUnique(dados).subscribe((retorno) => (this.Retorno = retorno));
+    }
+
     this.router.navigate(['Main']);
   }
-  
 }

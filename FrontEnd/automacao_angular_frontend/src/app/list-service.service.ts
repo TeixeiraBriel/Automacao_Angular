@@ -27,4 +27,8 @@ export class ListService {
   deleteUnique(Nome: String):Observable<any>{
     return this.http.post<any>(this.apiUrl+"/Animal/remover/"+Nome, {});
   }
+  
+  editUnique(Animal: Animal):Observable<string>{
+    return this.http.post<string>(this.apiUrl+"/Animal/editar", Animal);
+  }
 }

@@ -5,19 +5,19 @@
 
     <form #meuForm="ngForm" (ngSubmit)="postar(meuForm.value)">
         <div>
-            <input ngModel #formNome="ngModel" required name="nome" placeholder="Nome..." type="text" />
+            <input ngModel #formNome="ngModel" required name="nome" placeholder="Nome..." type="text" [(ngModel)]="AnimalEditar.nome" [disabled]="Editar"/>
         </div>
         <div>
-            <input ngModel #formIdade="ngModel" required name="Idade" placeholder="Idade..." type="text" />
+            <input ngModel #formIdade="ngModel" required name="Idade" placeholder="Idade..." type="text" [(ngModel)]="AnimalEditar.idade"/>
         </div>
         <div>
-            <input ngModel #formCor="ngModel" required name="Cor" placeholder="Cor..." type="text" />
+            <input ngModel #formCor="ngModel" required name="Cor" placeholder="Cor..." type="text" [(ngModel)]="AnimalEditar.cor"/>
         </div>
         <div>
-            <input ngModel #formISexo="ngModel" required name="Sexo" placeholder="Sexo..." type="text" />
+            <input ngModel #formISexo="ngModel" required name="Sexo" placeholder="Sexo..." type="text" [(ngModel)]="AnimalEditar.sexo"/>
         </div>
         <div>
-            <input ngModel #formPeso="ngModel" required name="Peso" placeholder="Peso..." type="text" />
+            <input ngModel #formPeso="ngModel" required name="Peso" placeholder="Peso..." type="text" [(ngModel)]="AnimalEditar.peso"/>
         </div>
 
         <div>
@@ -26,4 +26,8 @@
             </button>
         </div>
     </form>
+
+    <p>Area</p>
+    <p>{{AnimalEditar.nome}}</p>
+    <p>{{Editar}}</p>
 </div>

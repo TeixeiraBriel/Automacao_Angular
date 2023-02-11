@@ -20,6 +20,13 @@ namespace Automacao.Animais
                 .Pipe<GravaAnimal>()
                 .Pipe<SalvaNovaLista>();
 
+            Pipeline("EditarAnimal")
+                .Pipe<AcessaJson>()
+                .Pipe<BuscaAnimal>()
+                .Pipe<RemoveAnimal>()
+                .Pipe<GravaAnimal>()
+                .Pipe<SalvaNovaLista>();
+
             Pipeline("RemoverAnimal")
                 .Pipe<AcessaJson>()
                 .Pipe<BuscaAnimal>()

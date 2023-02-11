@@ -11,7 +11,7 @@ namespace Automacao.Animais.Pipe
         public object Run (dynamic input)
         {
             List<Animal> Animais = input.Animais;
-            string nomeAnimal = input.Animal.Nome;
+            string nomeAnimal = input.novoAnimal.Nome;
 
             Animal animalSelecionado = Animais.FirstOrDefault(x => x.Nome.ToLower() == nomeAnimal.ToLower());
 

@@ -72,7 +72,7 @@ namespace Host.Controllers
             ResultadoExecucao retorno = null;
             try
             {
-                retorno = _executorAnimais.ExecutaComRetorno("CriaNovoAnimal", new { Animal = novoAnimal }.ToExpando());
+                retorno = _executorAnimais.ExecutaComRetorno("CriaNovoAnimal", new { novoAnimal = novoAnimal }.ToExpando());
 
                 return StatusCode(200, "Sucesso!");
             }
@@ -93,6 +93,26 @@ namespace Host.Controllers
 
                 if (retorno.Output.message == "Sucesso")
                     return StatusCode(200, $"Você Excluiu {NomeAnimal}");
+                else
+                    return StatusCode(200, retorno.Output.message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        //[JwtAuthorize]
+        [HttpPost, Route("editar")]
+        public IActionResult editarAnimal([FromBody] Animal novoAnimal)
+        {
+            ResultadoExecucao retorno = null;
+            try
+            {
+                retorno = _executorAnimais.ExecutaComRetorno("EditarAnimal", new { novoAnimal = novoAnimal, nomeAnimal = novoAnimal.Nome, message = "Sucesso" }.ToExpando());
+
+                if (retorno.Output.message == "Sucesso")
+                    return StatusCode(200, $"Você editou {novoAnimal.Nome}");
                 else
                     return StatusCode(200, retorno.Output.message);
             }

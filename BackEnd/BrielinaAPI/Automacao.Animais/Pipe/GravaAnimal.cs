@@ -11,7 +11,7 @@ namespace Automacao.Animais.Pipe
         public object Run (dynamic input)
         {
             List<Animal> Animais = input.Animais;
-            Animal animal = input.Animal;
+            Animal animal = input.novoAnimal;
             Animais.Add(animal);
 
             return input;

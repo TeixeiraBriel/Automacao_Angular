@@ -7,7 +7,8 @@ import { NovoAnimalComponent } from './novo-animal/novo-animal.component';
 const routes: Routes = [
   {path: 'Login', component:LoginComponent},
   {path: 'Main', component:MainComponent},
-  {path: 'novoAnimal', component:NovoAnimalComponent}
+  {path: 'novoAnimal', component:NovoAnimalComponent},
+  {path: '', component:MainComponent}
 ];
 
 @NgModule({
