@@ -7,12 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ExecutorAnimais\**" />
+    <EmbeddedResource Remove="ExecutorAnimais\**" />
+    <None Remove="ExecutorAnimais\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Automacao.Albion\Automacao.Albion.csproj" />
     <ProjectReference Include="..\Automacao.Animais\Automacao.Animais.csproj" />
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Executor\" />
     <Folder Include="EntityFramework\" />
     <Folder Include="Services\" />
     <Folder Include="Repositorio\" />

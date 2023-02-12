@@ -13,15 +13,15 @@ namespace Host.Controllers
 
         public AppSettings _appSettings { get; set; }
 
-        private IExecutor _executorAnimais;
+        private IExecutor _ExecutorAnimaisAnimais;
 
         #endregion
 
         #region Construtor
-        public AnimalController(AppSettings appSettings, IExecutor executorAnimais)
+        public AnimalController(AppSettings appSettings, IExecutor ExecutorAnimaisAnimais)
         {
             _appSettings = appSettings;
-            _executorAnimais = executorAnimais;
+            _ExecutorAnimaisAnimais = ExecutorAnimaisAnimais;
         }
 
         #endregion
@@ -35,7 +35,7 @@ namespace Host.Controllers
             ResultadoExecucao retorno = null;
             try
             {
-                retorno = _executorAnimais.ExecutaComRetorno("BuscaTodosAnimais", new { }.ToExpando());
+                retorno = _ExecutorAnimaisAnimais.AnimaisExecutaComRetorno("BuscaTodosAnimais", new { }.ToExpando());
 
                 return StatusCode(200, retorno.Output.Animais);
             }
@@ -52,7 +52,7 @@ namespace Host.Controllers
             ResultadoExecucao retorno = null;
             try
             {
-                retorno = _executorAnimais.ExecutaComRetorno("BuscaAnimalEspecifico", new { nomeAnimal = NomeAnimal, message = "Sucesso" }.ToExpando());
+                retorno = _ExecutorAnimaisAnimais.AnimaisExecutaComRetorno("BuscaAnimalEspecifico", new { nomeAnimal = NomeAnimal, message = "Sucesso" }.ToExpando());
 
                 if (retorno.Output.message == "Sucesso")
                     return StatusCode(200, retorno.Output.Animal);
@@ -72,7 +72,7 @@ namespace Host.Controllers
             ResultadoExecucao retorno = null;
             try
             {
-                retorno = _executorAnimais.ExecutaComRetorno("CriaNovoAnimal", new { novoAnimal = novoAnimal }.ToExpando());
+                retorno = _ExecutorAnimaisAnimais.AnimaisExecutaComRetorno("CriaNovoAnimal", new { novoAnimal = novoAnimal }.ToExpando());
 
                 return StatusCode(200, novoAnimal);
             }
@@ -89,7 +89,7 @@ namespace Host.Controllers
             ResultadoExecucao retorno = null;
             try
             {
-                retorno = _executorAnimais.ExecutaComRetorno("RemoverAnimal", new { nomeAnimal = NomeAnimal, message = "Sucesso" }.ToExpando());
+                retorno = _ExecutorAnimaisAnimais.AnimaisExecutaComRetorno("RemoverAnimal", new { nomeAnimal = NomeAnimal, message = "Sucesso" }.ToExpando());
 
                 if (retorno.Output.message == "Sucesso")
                     return StatusCode(200, $"Você Excluiu {NomeAnimal}");
@@ -109,7 +109,7 @@ namespace Host.Controllers
             ResultadoExecucao retorno = null;
             try
             {
-                retorno = _executorAnimais.ExecutaComRetorno("EditarAnimal", new { novoAnimal = novoAnimal, nomeAnimal = novoAnimal.Nome, message = "Sucesso" }.ToExpando());
+                retorno = _ExecutorAnimaisAnimais.AnimaisExecutaComRetorno("EditarAnimal", new { novoAnimal = novoAnimal, nomeAnimal = novoAnimal.Nome, message = "Sucesso" }.ToExpando());
 
                 if (retorno.Output.message == "Sucesso")
                     return StatusCode(200, $"Você editou {novoAnimal.Nome}");

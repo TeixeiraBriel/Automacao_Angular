@@ -31,4 +31,8 @@ export class ListService {
   editUnique(Animal: Animal):Observable<string>{
     return this.http.post<string>(this.apiUrl+"/Animal/editar", Animal);
   }
+
+  async albion_buscaPorNickname(Nome: String):Promise<Observable<String[]>>{
+    return await this.http.get<String[]>(this.apiUrl+"/Albion/"+Nome);
+  }
 }

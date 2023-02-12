@@ -18,6 +18,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
+import { AlbionComponent } from './albion/albion.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import {MatSelectModule} from '@angular/material/select';
     HeaderComponent,
     MainComponent,
     CardComentarioComponent,
-    NovoAnimalComponent
+    NovoAnimalComponent,
+    AlbionComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

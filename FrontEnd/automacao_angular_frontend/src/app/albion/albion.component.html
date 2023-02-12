@@ -1,0 +1,43 @@
+<!-- <button mat-raised-button (click)="isEditable = !isEditable">
+  {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+</button> -->
+<app-header></app-header>
+<div>
+  <mat-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Busca por Nickname</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Nickname</mat-label>
+          <input matInput formControlName="firstCtrl" placeholder="..." [(ngModel)]="inputNickname" required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button (click)="segundoPasso(stepper)">Buscar</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Escolha dentre as opções</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Dados</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

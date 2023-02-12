@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infraestrutura", "Infraestr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InjecaoDependecia", "InjecaoDependecia\InjecaoDependecia.csproj", "{0823F3B0-50B7-414B-AE99-C41440AAF75C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automacao.Animais", "Automacao.Animais\Automacao.Animais.csproj", "{27E6F886-F229-4867-9E7E-8B90C425DFA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automacao.Animais", "Automacao.Animais\Automacao.Animais.csproj", "{27E6F886-F229-4867-9E7E-8B90C425DFA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automacao.Albion", "Automacao.Albion\Automacao.Albion.csproj", "{456BD5EE-8097-4A92-B0DE-E9DA9283119B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{27E6F886-F229-4867-9E7E-8B90C425DFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27E6F886-F229-4867-9E7E-8B90C425DFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27E6F886-F229-4867-9E7E-8B90C425DFA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456BD5EE-8097-4A92-B0DE-E9DA9283119B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456BD5EE-8097-4A92-B0DE-E9DA9283119B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456BD5EE-8097-4A92-B0DE-E9DA9283119B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456BD5EE-8097-4A92-B0DE-E9DA9283119B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
