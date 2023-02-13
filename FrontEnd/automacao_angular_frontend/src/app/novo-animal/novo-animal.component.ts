@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ListService } from 'src/app/list-service.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Animal } from '../Animal';
+import { Animal } from '../Interfaces/Animal';
 
 @Component({
   selector: 'app-novo-animal',

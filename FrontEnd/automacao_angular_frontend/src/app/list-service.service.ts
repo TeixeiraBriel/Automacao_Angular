@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import  {Animal} from './Animal';
+import  {Animal} from './Interfaces/Animal';
 
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { Personagem } from './Interfaces/Personagem';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,11 @@ export class ListService {
     return this.http.post<string>(this.apiUrl+"/Animal/editar", Animal);
   }
 
-  async albion_buscaPorNickname(Nome: String):Promise<Observable<String[]>>{
-    return await this.http.get<String[]>(this.apiUrl+"/Albion/"+Nome);
+  async albion_buscaPorNickname(Nome: String):Promise<Observable<Personagem[]>>{
+    return await this.http.get<Personagem[]>(this.apiUrl+"/Albion/"+Nome);
+  }
+
+  async albion_buscaDadosPorId(Id: String):Promise<Observable<any>>{
+    return await this.http.get<any>(this.apiUrl+"/Albion/Id/"+Id);
   }
 }

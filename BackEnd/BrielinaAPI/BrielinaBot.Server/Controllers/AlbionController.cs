@@ -36,7 +36,32 @@ namespace Host.Controllers
             {
                 retorno = _Executor.AlbionExecutaComRetorno("BuscaNicknames", new { nickname = nome }.ToExpando());
 
-                return StatusCode(200, retorno.Output.opcoes);
+                string[] opcoes = retorno.Output.opcoes;
+                List<dynamic> newOpcoes = new List<dynamic>();
+                foreach (var opcao in opcoes)
+                {
+                    dynamic saida = new { Nome = opcao.Split('|')[0], Id = opcao.Split('|')[1] };
+                    newOpcoes.Add(saida);
+                }
+
+                return StatusCode(200, newOpcoes);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        //[JwtAuthorize]
+        [HttpGet, Route("Id/{Id}")]
+        public IActionResult BuscaPorId([FromRoute] string Id)
+        {
+            ResultadoExecucao retorno = null;
+            try
+            {
+                retorno = _Executor.AlbionExecutaComRetorno("BuscaDadosJogador", new { Id = Id }.ToExpando());
+
+                return StatusCode(200, retorno.Output.dadosJogador);
             }
             catch (Exception ex)
             {

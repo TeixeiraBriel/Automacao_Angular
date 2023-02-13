@@ -10,6 +10,9 @@ namespace Automacao.Albion
             Pipeline("BuscaNicknames")
                 .Pipe<BuscaNomes>();
 
+            Pipeline("BuscaDadosJogador")
+                .Pipe<BuscaDadosJogador>();
+
         }
     }
 }

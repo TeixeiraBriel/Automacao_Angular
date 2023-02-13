@@ -1,7 +1,7 @@
 import { Component, Input, Output } from '@angular/core';
 import  {ListService} from 'src/app/list-service.service';
 import { Router } from '@angular/router';
-import  {Animal} from '../Animal';
+import  {Animal} from '../Interfaces/Animal';
 
 @Component({
   selector: 'app-card-comentario',
