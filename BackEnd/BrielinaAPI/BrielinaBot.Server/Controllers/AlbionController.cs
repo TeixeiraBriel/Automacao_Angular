@@ -36,7 +36,7 @@ namespace Host.Controllers
             {
                 retorno = _Executor.AlbionExecutaComRetorno("BuscaNicknames", new { nickname = nome }.ToExpando());
 
-                string[] opcoes = retorno.Output.opcoes;
+                var opcoes = retorno.Output.opcoes;
                 List<dynamic> newOpcoes = new List<dynamic>();
                 foreach (var opcao in opcoes)
                 {
