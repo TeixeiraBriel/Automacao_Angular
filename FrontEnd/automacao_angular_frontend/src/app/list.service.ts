@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import  {Animal} from './Interfaces/Animal';
+import { Personagem } from './Interfaces/Personagem';
 
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import { Personagem } from './Interfaces/Personagem';
 
 @Injectable({
   providedIn: 'root'

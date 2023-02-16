@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
-import { ListService } from 'src/app/list-service.service';
+import { ListService } from 'src/app/list.service';
 import { firstValueFrom, EMPTY } from 'rxjs'
 import { Personagem } from '../Interfaces/Personagem';
 

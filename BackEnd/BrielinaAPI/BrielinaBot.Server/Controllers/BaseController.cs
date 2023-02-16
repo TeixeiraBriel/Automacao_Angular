@@ -1,4 +1,6 @@
 ﻿using Dominio.Configuration;
+using Dominio.Entidades;
+using Dominio.Interfaces.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Host.Controllers
@@ -14,7 +16,7 @@ namespace Host.Controllers
         #region Construtor
         public BaseController(AppSettings appSettings)
         {
-            _appSettings = appSettings;
+            _appSettings = appSettings; 
         }
 
         #endregion

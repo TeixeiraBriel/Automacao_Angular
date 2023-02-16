@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import  {Animal} from '../Interfaces/Animal';
-import  {ListService} from 'src/app/list-service.service';
+import  {ListService} from 'src/app/list.service';
 
 @Component({
   selector: 'app-main',

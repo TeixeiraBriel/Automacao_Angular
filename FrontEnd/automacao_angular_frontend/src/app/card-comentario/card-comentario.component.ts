@@ -1,5 +1,5 @@
 import { Component, Input, Output } from '@angular/core';
-import  {ListService} from 'src/app/list-service.service';
+import  {ListService} from 'src/app/list.service';
 import { Router } from '@angular/router';
 import  {Animal} from '../Interfaces/Animal';
 

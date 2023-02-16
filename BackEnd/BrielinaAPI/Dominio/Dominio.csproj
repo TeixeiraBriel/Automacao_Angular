@@ -10,7 +10,6 @@
     <Folder Include="Entidades\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Interfaces\Services\" />
-    <Folder Include="Interfaces\Repositorio\" />
   </ItemGroup>
 
 </Project>

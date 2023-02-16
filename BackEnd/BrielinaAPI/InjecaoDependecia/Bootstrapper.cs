@@ -1,6 +1,8 @@
 ﻿using Dominio.Configuration;
 using Dominio.Interfaces.Executor;
+using Dominio.Interfaces.Repositorio;
 using Infraestrutura.Executor;
+using Infraestrutura.Repositorio;
 using InjecaoDependecia.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +22,7 @@ namespace InjecaoDependecia
             services.AddScoped<IExecutor, Executor>();
 
             //Repositories
+            services.AddScoped<IAulaRepositorio, AulaRepositorio>();
         }
     }
 }
