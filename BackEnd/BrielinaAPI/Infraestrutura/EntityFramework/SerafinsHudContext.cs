@@ -1,4 +1,5 @@
 ﻿using Dominio.Entidades;
+using Dominio.Entidades.SerafinsHub;
 using Infraestrutura.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -6,18 +7,18 @@ using Microsoft.Extensions.Options;
 
 namespace Infraestrutura.EntityFramework
 {
-    public class SerafinsHudContext : DbContext
+    public class SerafinsHubContext : DbContext
     {
         private IConfiguration _configuration;
 
-        public SerafinsHudContext(DbContextOptions options, IConfiguration configuration) : base(options)
+        public SerafinsHubContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connetionString = _configuration.GetConnectionString("AulasConnection");
+            string connetionString = _configuration.GetConnectionString("SerafinsHubConnection");
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseMySql(connetionString, ServerVersion.AutoDetect(connetionString));
         }
@@ -29,11 +30,11 @@ namespace Infraestrutura.EntityFramework
                 relationship.DeleteBehavior= DeleteBehavior.Restrict;
             }
 
-            modelBuilder.ApplyConfiguration(new AulaMapping());
-            modelBuilder.ApplyConfiguration(new NarrativaMapping());
+            modelBuilder.ApplyConfiguration(new PublicacoesMapping());
+            modelBuilder.ApplyConfiguration(new ComentarioMapping());
         }
 
-        public DbSet<Aula> Aulas { get; set; }
-        public DbSet<Narrativa> Narrativas { get; set; }
+        public DbSet<Publicacoes> Publicacoes { get; set; }
+        public DbSet<Comentario> Comentarios { get; set; }
     }
 }

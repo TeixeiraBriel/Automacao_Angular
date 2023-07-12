@@ -21,7 +21,7 @@ namespace Infraestrutura.Repositorio
 
         public async Task<List<Narrativa>> ObterTodasNarrativas()
         {
-            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
+            using (AulasContext _context = ContextFactory.AulasOpenContext(_configuration))
             {
                 Task<List<Narrativa>> list = _context.Narrativas.ToListAsync();
                 return await list;
@@ -29,14 +29,14 @@ namespace Infraestrutura.Repositorio
         }
         public async Task<Narrativa> ObterNarrativaPorId(int Id)
         {
-            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
+            using (AulasContext _context = ContextFactory.AulasOpenContext(_configuration))
             {
                 return await _context.Narrativas.FirstOrDefaultAsync(x => x.IdNarrativas == Id);
             }
         }
         public async Task CriarNarrativa(Narrativa newNarrativa)
         {
-            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
+            using (AulasContext _context = ContextFactory.AulasOpenContext(_configuration))
             {
                 _context.Narrativas.Add(newNarrativa);
                 var teste = await _context.SaveChangesAsync();
@@ -44,7 +44,7 @@ namespace Infraestrutura.Repositorio
         }
         public async Task DeleteNarrativa(int Id)
         {
-            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
+            using (AulasContext _context = ContextFactory.AulasOpenContext(_configuration))
             {
                 Narrativa remove = await _context.Narrativas.FirstOrDefaultAsync(x => x.IdNarrativas == Id);;
                 _context.Narrativas.Remove(remove);

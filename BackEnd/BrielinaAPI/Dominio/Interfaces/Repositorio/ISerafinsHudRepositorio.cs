@@ -1,4 +1,5 @@
 ﻿using Dominio.Entidades;
+using Dominio.Entidades.SerafinsHub;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Dominio.Interfaces.Repositorio
 {
-    public interface ISerafinsHudRepositorio
+    public interface ISerafinsHubRepositorio
     {
-        Task<List<Aula>> ObterTodasAulas();
-        Task<Aula> ObterAulaPorId(int Id);
-        Task CriarAula(Aula newAula);
-        Task UpdateAula(Aula newAula);    
+        Task<List<Publicacoes>> ObterTodasPublicacoes();
+        Task<Publicacoes> ObterPublicacoesPorId(int Id);
+        Task CriarPublicacoes(Publicacoes newAula);
+        Task UpdatePublicacoes(Publicacoes newAula);    
     }
 }

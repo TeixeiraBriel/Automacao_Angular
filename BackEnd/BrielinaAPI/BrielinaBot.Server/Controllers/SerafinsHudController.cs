@@ -1,21 +1,22 @@
 ﻿using Dominio.Configuration;
 using Dominio.Entidades;
+using Dominio.Entidades.SerafinsHub;
 using Dominio.Interfaces.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Host.Controllers
 {
-    public class SerafinsHudController : MainController
+    public class SerafinsHubController : MainController
     {
         #region Variaveis
 
         public AppSettings _appSettings { get; set; }
-        public ISerafinsHudRepositorio _serafinsRepositorio { get; set; }
+        public ISerafinsHubRepositorio _serafinsRepositorio { get; set; }
 
         #endregion
 
         #region Construtor
-        public SerafinsHudController(AppSettings appSettings, ISerafinsHudRepositorio aulaRepositorio)
+        public SerafinsHubController(AppSettings appSettings, ISerafinsHubRepositorio aulaRepositorio)
         {
             _appSettings = appSettings;
             _serafinsRepositorio= aulaRepositorio;
@@ -26,11 +27,11 @@ namespace Host.Controllers
         #region Requisições
 
         [HttpGet, Route("Todos")]
-        public async Task<IActionResult> BuscaTodasAulas()
+        public async Task<IActionResult> BuscaTodasPublicacoes()
         {
             try
             {
-                var retorne = await _serafinsRepositorio.ObterTodasAulas();
+                var retorne = await _serafinsRepositorio.ObterTodasPublicacoes();
                 return StatusCode(200, retorne);
             }
             catch (Exception ex)
@@ -40,11 +41,11 @@ namespace Host.Controllers
         }
 
         [HttpGet, Route("{id}")]
-        public async Task<IActionResult> BuscaAulaPorId([FromRoute]int Id)
+        public async Task<IActionResult> BuscaPublicacoesPorId([FromRoute]int Id)
         {
             try
             {
-                var retorne = await _serafinsRepositorio.ObterAulaPorId(Id);
+                var retorne = await _serafinsRepositorio.ObterPublicacoesPorId(Id);
                 return StatusCode(200, retorne);
             }
             catch (Exception ex)
@@ -54,24 +55,18 @@ namespace Host.Controllers
         }
 
         [HttpPost, Route("Nova")]
-        public async Task<IActionResult> CriarAula([FromBody] Aula newAula)
+        public async Task<IActionResult> CriarPublicacoes([FromBody] Publicacoes newPublicacoes)
         {
             try
             {
-                Aula _aula = new Aula()
+                Publicacoes _Publicacoes = new Publicacoes()
                 {
-                    Professor = newAula.Professor,
-                    Tema = newAula.Tema,
-                    ResumoAula = newAula.ResumoAula,
-                    DataAula = DateTime.Now.ToString(),
-                    Ministracao = "Pendente...",
-                    QtdAlunos = "0",
-                    QtdBiblias = "0",
-                    QtdVisitantes= "0"
+                    text = newPublicacoes.text,
+                    data = newPublicacoes.data
                 };
 
-                await _serafinsRepositorio.CriarAula(_aula);
-                return StatusCode(200, _aula);
+                await _serafinsRepositorio.CriarPublicacoes(_Publicacoes);
+                return StatusCode(200, _Publicacoes);
             }
             catch (Exception ex)
             {
@@ -80,11 +75,11 @@ namespace Host.Controllers
         }
 
         [HttpPut, Route("Editar")]
-        public async Task<IActionResult> EditarAula([FromBody] Aula editAula)
+        public async Task<IActionResult> EditarPublicacoes([FromBody] Publicacoes editPublicacoes)
         {
             try
             {
-                await _serafinsRepositorio.UpdateAula(editAula);
+                await _serafinsRepositorio.UpdatePublicacoes(editPublicacoes);
                 return StatusCode(200, "Sucesso!");
             }
             catch (Exception ex)

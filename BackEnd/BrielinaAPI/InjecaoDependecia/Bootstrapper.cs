@@ -22,7 +22,7 @@ namespace InjecaoDependecia
             services.AddScoped<IExecutor, Executor>();
 
             //Repositories
-            services.AddScoped<ISerafinsHudRepositorio, SerafinsHudRepositorio>();
+            services.AddScoped<ISerafinsHubRepositorio, SerafinsHubRepositorio>();
             services.AddScoped<IAulaRepositorio, AulaRepositorio>();
             services.AddScoped<INarrativaRepositorio, NarrativaRepositorio>();
         }

@@ -1,4 +1,5 @@
 ﻿using Dominio.Entidades;
+using Dominio.Entidades.SerafinsHub;
 using Dominio.Interfaces.Repositorio;
 using Infraestrutura.EntityFramework;
 using Microsoft.EntityFrameworkCore;
@@ -11,42 +12,42 @@ using System.Threading.Tasks;
 
 namespace Infraestrutura.Repositorio
 {
-    public class SerafinsHudRepositorio : ISerafinsHudRepositorio
+    public class SerafinsHubRepositorio : ISerafinsHubRepositorio
     {
         private IConfiguration _configuration;
-        public SerafinsHudRepositorio(IConfiguration configuration)
+        public SerafinsHubRepositorio(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        public async Task<List<Aula>> ObterTodasAulas()
+        public async Task<List<Publicacoes>> ObterTodasPublicacoes()
         {
-            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
+            using (SerafinsHubContext _context = ContextFactory.SerafinsHubOpenContext(_configuration))
             {
-                Task<List<Aula>> list = _context.Aulas.ToListAsync();
+                Task<List<Publicacoes>> list = _context.Publicacoes.ToListAsync();
                 return await list;
             }
         }
-        public async Task<Aula> ObterAulaPorId(int Id)
+        public async Task<Publicacoes> ObterPublicacoesPorId(int Id)
         {
-            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
+            using (SerafinsHubContext _context = ContextFactory.SerafinsHubOpenContext(_configuration))
             {
-                return await _context.Aulas.FirstOrDefaultAsync(x => x.IdAulas == Id);
+                return await _context.Publicacoes.FirstOrDefaultAsync(x => x.idpublicacoes == Id);
             }
         }
-        public async Task CriarAula(Aula newAula)
+        public async Task CriarPublicacoes(Publicacoes newPublicacoes)
         {
-            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
+            using (SerafinsHubContext _context = ContextFactory.SerafinsHubOpenContext(_configuration))
             {
-                _context.Aulas.Add(newAula);
+                _context.Publicacoes.Add(newPublicacoes);
                 await _context.SaveChangesAsync();
             }
         }
-        public async Task UpdateAula(Aula newAula)
+        public async Task UpdatePublicacoes(Publicacoes newPublicacoes)
         {
-            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
+            using (SerafinsHubContext _context = ContextFactory.SerafinsHubOpenContext(_configuration))
             {
-                _context.Aulas.Where(x => x.IdAulas == newAula.IdAulas).First().Ministracao = newAula.Ministracao;
+                _context.Publicacoes.Where(x => x.idpublicacoes == newPublicacoes.idpublicacoes).First().text = newPublicacoes.text;
                 await _context.SaveChangesAsync();
             }
         }
