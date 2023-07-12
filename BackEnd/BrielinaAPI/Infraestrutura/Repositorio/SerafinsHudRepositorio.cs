@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 
 namespace Infraestrutura.Repositorio
 {
-    public class AulaRepositorio : IAulaRepositorio
+    public class SerafinsHudRepositorio : ISerafinsHudRepositorio
     {
         private IConfiguration _configuration;
-        public AulaRepositorio(IConfiguration configuration)
+        public SerafinsHudRepositorio(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
         public async Task<List<Aula>> ObterTodasAulas()
         {
-            using (AulasContext _context = ContextFactory.AulasOpenContext(_configuration))
+            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
             {
                 Task<List<Aula>> list = _context.Aulas.ToListAsync();
                 return await list;
@@ -29,14 +29,14 @@ namespace Infraestrutura.Repositorio
         }
         public async Task<Aula> ObterAulaPorId(int Id)
         {
-            using (AulasContext _context = ContextFactory.AulasOpenContext(_configuration))
+            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
             {
                 return await _context.Aulas.FirstOrDefaultAsync(x => x.IdAulas == Id);
             }
         }
         public async Task CriarAula(Aula newAula)
         {
-            using (AulasContext _context = ContextFactory.AulasOpenContext(_configuration))
+            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
             {
                 _context.Aulas.Add(newAula);
                 await _context.SaveChangesAsync();
@@ -44,7 +44,7 @@ namespace Infraestrutura.Repositorio
         }
         public async Task UpdateAula(Aula newAula)
         {
-            using (AulasContext _context = ContextFactory.AulasOpenContext(_configuration))
+            using (SerafinsHudContext _context = ContextFactory.SerafinsHudOpenContext(_configuration))
             {
                 _context.Aulas.Where(x => x.IdAulas == newAula.IdAulas).First().Ministracao = newAula.Ministracao;
                 await _context.SaveChangesAsync();

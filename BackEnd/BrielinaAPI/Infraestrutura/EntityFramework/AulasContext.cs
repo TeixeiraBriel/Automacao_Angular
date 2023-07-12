@@ -6,11 +6,11 @@ using Microsoft.Extensions.Options;
 
 namespace Infraestrutura.EntityFramework
 {
-    public class Context : DbContext
+    public class AulasContext : DbContext
     {
         private IConfiguration _configuration;
 
-        public Context(DbContextOptions options, IConfiguration configuration) : base(options)
+        public AulasContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
         }
@@ -19,9 +19,7 @@ namespace Infraestrutura.EntityFramework
         {
             string connetionString = _configuration.GetConnectionString("DefaultConnection");
             base.OnConfiguring(optionsBuilder);
-            //optionsBuilder.UseMySQL("server=localhost;database=aulas;user=admin;password=admin");
             optionsBuilder.UseMySql("server=localhost;database=serafinsjuniores;user=admin;password=admin", ServerVersion.AutoDetect("server=localhost;database=serafinsjuniores;user=admin;password=admin"));
-            //optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,8 +30,10 @@ namespace Infraestrutura.EntityFramework
             }
 
             modelBuilder.ApplyConfiguration(new AulaMapping());
+            modelBuilder.ApplyConfiguration(new NarrativaMapping());
         }
 
         public DbSet<Aula> Aulas { get; set; }
+        public DbSet<Narrativa> Narrativas { get; set; }
     }
 }

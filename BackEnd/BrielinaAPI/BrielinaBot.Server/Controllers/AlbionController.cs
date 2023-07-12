@@ -6,7 +6,7 @@ using XpandoLibrary;
 
 namespace Host.Controllers
 {
-    public class AulasController : MainController
+    public class AlbionController : MainController
     {
         #region Variaveis
 
@@ -17,7 +17,7 @@ namespace Host.Controllers
         #endregion
 
         #region Construtor
-        public AulasController(AppSettings appSettings, IExecutor Executor)
+        public AlbionController(AppSettings appSettings, IExecutor Executor)
         {
             _appSettings = appSettings;
             _Executor = Executor;

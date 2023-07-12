@@ -10,14 +10,24 @@ namespace Infraestrutura.EntityFramework
 {
     public class ContextFactory
     {
-        public static Context OpenContext(IConfiguration configuration)
+        public static SerafinsHudContext SerafinsHudOpenContext( IConfiguration configuration)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<Context>();
+            var optionsBuilder = new DbContextOptionsBuilder<SerafinsHudContext>();
             optionsBuilder
                 .EnableSensitiveDataLogging()
                 .EnableServiceProviderCaching();
 
-            return new Context(optionsBuilder.Options, configuration);
+            return new SerafinsHudContext(optionsBuilder.Options, configuration);
+        }
+
+        public static AulasContext AulasOpenContext(IConfiguration configuration)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AulasContext>();
+            optionsBuilder
+                .EnableSensitiveDataLogging()
+                .EnableServiceProviderCaching();
+
+            return new AulasContext(optionsBuilder.Options, configuration);
         }
     }
 }
