@@ -29,5 +29,15 @@ namespace Infraestrutura.EntityFramework
 
             return new AulasContext(optionsBuilder.Options, configuration);
         }
+
+        public static Context OpenContext(IConfiguration configuration)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<Context>();
+            optionsBuilder
+                .EnableSensitiveDataLogging()
+                .EnableServiceProviderCaching();
+
+            return new Context(optionsBuilder.Options, configuration);
+        }
     }
 }

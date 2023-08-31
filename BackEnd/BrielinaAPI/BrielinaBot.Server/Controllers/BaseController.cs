@@ -1,6 +1,5 @@
 ﻿using Dominio.Configuration;
-using Dominio.Entidades;
-using Dominio.Interfaces.Repositorio;
+using Host.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Host.Controllers
@@ -28,6 +27,13 @@ namespace Host.Controllers
         public IActionResult Version()
         {
             return StatusCode(200, _appSettings.Version);
+        }
+
+        [JwtAuthorize]
+        [HttpGet, Route("ValidaJWT")]
+        public IActionResult ValidaJWT()
+        {
+            return StatusCode(200, "Logado!");
         }
 
         #endregion
